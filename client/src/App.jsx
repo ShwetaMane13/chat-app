@@ -2,7 +2,7 @@ import { Main } from "./components/Main";
 
 
 function App() {
-  return <div className="App">
+  return <div>
     <Main />
   </div>;
 }
