@@ -4,3 +4,7 @@ export { ChannelSearch } from "./ChannelSearch";
 export { TeamChannelList } from "./TeamChannelList";
 export { TeamChannelPreview } from "./TeamChannelPreview";
 export { Auth } from "./Auth";
+export { ChannelInner } from "./ChannelInner";
+export { CreateChannel } from "./CreateChannel";
+export { EditChannel } from "./EditChannel";
+// export { TeamMessage } from "./TeamMessage";

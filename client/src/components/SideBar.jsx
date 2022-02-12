@@ -1,7 +1,7 @@
 import HospitalIcon from "../images/hospital.png";
 import LogoutIcon from "../images/logout.png"
 
-export const SideBar = () => (
+export const SideBar = ({ logout }) => (
     
     <div className="channel-list_sidebar">
 
@@ -13,7 +13,7 @@ export const SideBar = () => (
 
         <div className="channel-list_sidebar_icon2">
             <div className="icon1_inner">
-                <img src={LogoutIcon} alt="logout" width="30" />
+                <img src={LogoutIcon} alt="logout" width="30" onClick={logout}/>
             </div>
         </div>
 

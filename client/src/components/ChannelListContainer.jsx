@@ -6,10 +6,25 @@ import { CompanyHeader } from "./CompanyHeader";
 
 import { ChannelSearch, TeamChannelList, TeamChannelPreview } from "./index";
 
+const cookies = new Cookies();
+
 export const ChannelListContainer = () => {
+
+  const logout = () => {
+    cookies.remove("token");
+    cookies.remove('userId');
+    cookies.remove('username');
+    cookies.remove('fullName');
+    cookies.remove('avatarURL');
+    cookies.remove('hashedPassword');
+    cookies.remove('phoneNumber');
+
+    window.location.reload();
+  }
+
   return (
     <>
-      <SideBar />
+      <SideBar logout={logout}/>
       <div className="channel-list_list_wrapper">
         <CompanyHeader />
         <ChannelSearch />
