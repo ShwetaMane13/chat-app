@@ -1,7 +1,7 @@
 import { AddChannel } from  "../assets/AddChannel";
 
 
-export const TeamChannelList = ({children, error = false, loading, type}) => {
+export const TeamChannelList = ({children, error = false, loading, type, isCreating, setIsCreating, setCreateType, setIsEditing}) => {
     // console.log("error", error, type);
     if(error)
     {
@@ -33,7 +33,13 @@ export const TeamChannelList = ({children, error = false, loading, type}) => {
                 <p className="team_channel-list_header_title">
                 {type === 'team' ? 'Channels' : 'Messages'}
                 </p>
-                {/* button - add channel */}
+                <AddChannel 
+                isCreating = {isCreating} 
+                setIsCreating = {setIsCreating} 
+                setCreateType = {setCreateType} 
+                setIsEditing = {setIsEditing}
+                type={type === 'team' ? 'team' : 'messaging'}
+                />
             </div>
                 {children}
         </div>

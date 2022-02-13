@@ -7,4 +7,5 @@ export { Auth } from "./Auth";
 export { ChannelInner } from "./ChannelInner";
 export { CreateChannel } from "./CreateChannel";
 export { EditChannel } from "./EditChannel";
+export { UserList } from "./UserList";
 // export { TeamMessage } from "./TeamMessage";

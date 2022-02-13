@@ -23,7 +23,7 @@ export const ChannelContainer = ({ isCreating, setisCreating,
     if(isEditing){
         return (
             <div className="channel_container">
-                <editChannel 
+                <EditChannel 
                 setIsEditing={setIsEditing}/>
             </div>
         )
