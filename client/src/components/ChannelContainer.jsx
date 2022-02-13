@@ -10,8 +10,7 @@ export const ChannelContainer = ({
   setIsEditing,
   createType,
 }) => {
-  const { channel } = useChatContext();
-
+  // const { channel } = useChatContext();
   if (isCreating) {
     return (
       <div className="channel_container">
@@ -19,7 +18,6 @@ export const ChannelContainer = ({
       </div>
     );
   }
-
 
   if (isEditing) {
     return (
@@ -39,7 +37,6 @@ export const ChannelContainer = ({
       </p>
     </div>
   );
-  console.log("here");
   return (
     <div className="channel_container">
       <Channel

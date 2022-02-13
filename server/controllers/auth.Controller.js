@@ -1,7 +1,7 @@
 const { connect } = require("getstream");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
-const { StreamChat } = require("stream-chat").StreamChat;
+const StreamChat = require("stream-chat").StreamChat;
 
 require("dotenv").config();
 
@@ -65,6 +65,7 @@ const login = async (req, res) => {
       return res.status(401).json({ message: "Invalid password" });
     }
   } catch (e) {
+    console.log(e);
     return res.status(500).json({
       error: e.message,
     });
