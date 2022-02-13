@@ -4,7 +4,7 @@ const cors = require("cors");
 const authRouter = require("./routes/auth.js");
 
 const app = express();
-const PORT = process.env.port || 5000;
+const PORT = process.env.PORT || 5000;
 
 require("dotenv").config();
 
@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  return res.send("Hello World");
 });
 
 app.post("/", (req, res) => {
