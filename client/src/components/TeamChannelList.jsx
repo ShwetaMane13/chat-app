@@ -11,7 +11,7 @@ export const TeamChannelList = ({
   setIsEditing,
   setToggleContainer,
 }) => {
-  console.log("error", error, type);
+  // console.log("error", error, type);
 
   if (error) {
     return type === "team" ? (

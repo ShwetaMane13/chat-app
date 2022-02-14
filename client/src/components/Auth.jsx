@@ -71,6 +71,7 @@ export const Auth = () => {
 
       window.location.reload();
     } catch (err) {
+      console.log(err);
       if(isSignup){
         toast("Username already exists", { type: "error" });
       }

@@ -22,7 +22,7 @@ export const TeamChannelPreview = ({
     const members = Object.values(channel.state.members).filter(
       ({ user }) => user.id !== client.userID
     );
-console.log("members", members);
+// console.log("members", members);
 
 if(members.length > 0){
     return (
