@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Cookies from "universal-cookie";
 import axios from "axios";
-
+import { toast } from "react-toastify";
 import signinImage from "../images/lav_medium.jpg";
+import "react-toastify/dist/ReactToastify.css";
 
 const cookies = new Cookies();
 
@@ -23,38 +24,55 @@ export const Auth = () => {
     setForm({ ...form, [name]: value });
     // console.log(form);
   };
-
+  toast.configure();
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    try {
+      e.preventDefault();
 
-    // console.log(form);
+      // console.log(form);
+      const { username, password, phoneNumber, avatarURL } = form;
 
-    const { username, password, phoneNumber, avatarURL } = form;
+      let isnum = /^\d+$/.test(phoneNumber);
+      if (!isnum || phoneNumber.length !== 10) {
+        toast("Enter a valid phone number", { type: "error" });
+      }
 
-    const URL = "https://messengerbackendd.herokuapp.com/auth";
+      if (password.length < 6) {
+        toast("Password is required and must be at least 7 characters", {
+          type: "error",
+        });
+      }
 
-    const {
-      data: { token, userId, hashedPassword, fullName },
-    } = await axios.post(`${URL}/${isSignup ? "signup" : "login"}`, {
-      username,
-      password,
-      fullName: form.fullName,
-      phoneNumber,
-      avatarURL,
-    });
+      // toast("Failed! Payment is not completed", { type: "error" });
 
-    cookies.set("token", token);
-    cookies.set("username", username);
-    cookies.set("fullName", fullName);
-    cookies.set("userId", userId);
+      // const URL = "https://messengerbackendd.herokuapp.com/auth";
+      const URL = "http://localhost:5000/auth";
 
-    if (isSignup) {
-      cookies.set("phoneNumber", phoneNumber);
-      cookies.set("avatarURL", avatarURL);
-      cookies.set("hashedPassword", hashedPassword);
+      const {
+        data: { token, userId, hashedPassword, fullName },
+      } = await axios.post(`${URL}/${isSignup ? "signup" : "login"}`, {
+        username,
+        password,
+        fullName: form.fullName,
+        phoneNumber,
+        avatarURL,
+      });
+
+      cookies.set("token", token);
+      cookies.set("username", username);
+      cookies.set("fullName", fullName);
+      cookies.set("userId", userId);
+
+      if (isSignup) {
+        cookies.set("phoneNumber", phoneNumber);
+        cookies.set("avatarURL", avatarURL);
+        cookies.set("hashedPassword", hashedPassword);
+      }
+
+      window.location.reload();
+    } catch (err) {
+      toast("Username already exists", { type: "error" });
     }
-
-    window.location.reload();
   };
 
   const switchMode = () => {
