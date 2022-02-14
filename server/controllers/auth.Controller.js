@@ -12,7 +12,14 @@ const app_id = process.env.STREAM_API_ID;
 const signup = async (req, res) => {
   try {
     const { fullName, username, password, phoneNumber } = req.body;
+    const client = StreamChat.getInstance(api_key, api_secret);
+    const { users } = await client.queryUsers({ name: username });
 
+    if (users) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
     const userId = crypto.randomBytes(16).toString("hex");
 
     const serverClient = connect(api_key, api_secret, app_id);
@@ -30,6 +37,7 @@ const signup = async (req, res) => {
       phoneNumber,
     });
   } catch (e) {
+    console.log("e", e);
     return res.status(500).json({
       error: e.message,
     });
