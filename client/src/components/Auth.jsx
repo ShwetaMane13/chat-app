@@ -33,11 +33,11 @@ export const Auth = () => {
       const { username, password, phoneNumber, avatarURL } = form;
 
       let isnum = /^\d+$/.test(phoneNumber);
-      if (!isnum || phoneNumber.length !== 10) {
+      if (isSignup && (!isnum || phoneNumber.length !== 10)) {
         toast("Enter a valid phone number", { type: "error" });
       }
 
-      if (password.length < 6) {
+      if (isSignup && password.length < 6) {
         toast("Password is required and must be at least 7 characters", {
           type: "error",
         });
@@ -45,8 +45,8 @@ export const Auth = () => {
 
       // toast("Failed! Payment is not completed", { type: "error" });
 
-      // const URL = "https://messengerbackendd.herokuapp.com/auth";
-      const URL = "http://localhost:5000/auth";
+      const URL = "https://messagerbackend.herokuapp.com/auth";
+      // const URL = "http://localhost:5000/auth";
 
       const {
         data: { token, userId, hashedPassword, fullName },
@@ -71,7 +71,12 @@ export const Auth = () => {
 
       window.location.reload();
     } catch (err) {
-      toast("Username already exists", { type: "error" });
+      if(isSignup){
+        toast("Username already exists", { type: "error" });
+      }
+      else{
+      toast("Please enter correct password", { type: "error" });
+      }
     }
   };
 
