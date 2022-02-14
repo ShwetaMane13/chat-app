@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Cookies from "universal-cookie";
 import axios from "axios";
 
-import signinImage from "../images/signup.jpg";
+import signinImage from "../images/lav_medium.jpg";
 
 const cookies = new Cookies();
 
@@ -104,7 +104,7 @@ export const Auth = () => {
               </div>
             )}
 
-            {isSignup && (
+            {/* {isSignup && (
               <div className="auth_form-container_fields-content_input">
                 <label htmlFor="avatarURL">Avatar URL</label>
                 <input
@@ -115,7 +115,7 @@ export const Auth = () => {
                   required
                 />
               </div>
-            )}
+            )} */}
 
             <div className="auth_form-container_fields-content_input">
               <label htmlFor="password">Password</label>

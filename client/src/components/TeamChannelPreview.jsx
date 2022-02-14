@@ -22,7 +22,9 @@ export const TeamChannelPreview = ({
     const members = Object.values(channel.state.members).filter(
       ({ user }) => user.id !== client.userID
     );
+console.log("members", members);
 
+if(members.length > 0){
     return (
       <div className="channel-preview_item single">
         <Avatar
@@ -33,7 +35,11 @@ export const TeamChannelPreview = ({
         <p>{members[0]?.user?.fullName || members[0]?.user?.id}</p>
       </div>
     );
-  };
+  }
+  else{
+    return null;
+  }
+}
 
   return (
     <div
