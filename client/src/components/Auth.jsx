@@ -41,7 +41,9 @@ export const Auth = () => {
         toast("Password is required and must be at least 7 characters", {
           type: "error",
         });
-      }
+      } else {
+
+      
 
       // toast("Failed! Payment is not completed", { type: "error" });
 
@@ -70,6 +72,9 @@ export const Auth = () => {
       }
 
       window.location.reload();
+
+    }
+    
     } catch (err) {
       console.log(err);
       if(isSignup){
@@ -80,6 +85,7 @@ export const Auth = () => {
       }
     }
   };
+
 
   const switchMode = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
