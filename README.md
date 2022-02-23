@@ -1,4 +1,4 @@
-# acko-clone
+# Chat Social
 
 ---
 
@@ -15,8 +15,8 @@
 
 <!-- --- -->
 
-<!-- #### Project Demo:
-- **[Checkout The Live Project Demo](https://shoppersstopfrontend.netlify.app/)** -->
+#### Project Link:
+- **[Checkout the project](https://chatsocial-shwetamane13.vercel.app/)**
 
 ### Our Team Members :heart:
 
