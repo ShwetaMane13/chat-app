@@ -31,13 +31,16 @@ export const Auth = () => {
 
       // console.log(form);
       const { username, password, phoneNumber, avatarURL } = form;
-
-      let isnum = /^\d+$/.test(phoneNumber);
-      if (isSignup && (!isnum || phoneNumber.length !== 10)) {
+      let flag = false;
+    
+      if (isSignup && (isNaN(phoneNumber) === true || phoneNumber.length !== 10 || phoneNumber[0] === '0')) {
+       
+        flag = true;
         toast("Enter a valid phone number", { type: "error" });
       }
 
       if (isSignup && password.length < 6) {
+        flag = true;
         toast("Password is required and must be at least 7 characters", {
           type: "error",
         });
@@ -49,7 +52,8 @@ export const Auth = () => {
 
       const URL = "https://messagerbackend.herokuapp.com/auth";
       // const URL = "http://localhost:5000/auth";
-
+  if(!flag){
+    console.log("inside flag");
       const {
         data: { token, userId, hashedPassword, fullName },
       } = await axios.post(`${URL}/${isSignup ? "signup" : "login"}`, {
@@ -74,6 +78,7 @@ export const Auth = () => {
       window.location.reload();
 
     }
+  }
     
     } catch (err) {
       console.log(err);
@@ -124,9 +129,10 @@ export const Auth = () => {
             {isSignup && (
               <div className="auth_form-container_fields-content_input">
                 <label htmlFor="phoneNumber">Phone Number</label>
-                <input
+                <input 
+                 className="phonenumber"
                   name="phoneNumber"
-                  type="text"
+                  type="number"
                   placeholder="Phone Number"
                   onChange={handleChange}
                   required
